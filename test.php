@@ -6,7 +6,6 @@
   <title>XOR Encryption and Decryption</title>
 </head>
 <body>
-
 <script>
 
 // Function for XOR encryption
@@ -46,3 +45,8 @@ console.log('Decrypted Data:', decryptedData);
 
 </body>
 </html>
+
+<?php
+include "include/dbfunctions.php";
+echo dataDecrypt('KAMFCxIcCAo%3D');
+?>
