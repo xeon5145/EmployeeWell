@@ -39,9 +39,6 @@
                 },
                 success: function(Data) {
 
-                    // console.log(data);
-                    // $('#loginStatus').html(data);
-
                     if (Data >= 0) {
                         $('#loginStatus').html('<div class="alert alert-success" role="alert">Login Successfull , Welcome</div>');
                         var loggedInUser = Data;
@@ -54,10 +51,14 @@
                                 loggedInUser: loggedInUser
                             },
                             success: function(response) {
-                                console.log(response); 
+                                console.log(response);
                             }
                         });
                         // sending data for session creation
+                        
+                        // redirection to dashboard
+                        window.location = 'dashboard.php';
+                        // redirection to dashboard
                     } else if (Data == -1) {
                         $('#loginStatus').html('<div class="alert alert-info" role="alert">Login Failed , Please check credentials</div>');
 
