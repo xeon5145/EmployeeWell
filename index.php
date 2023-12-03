@@ -2,8 +2,7 @@
 require_once "config.php";
 
 session_start();
-$loggedInUser = $_SESSION['loggedInUser'];
-if(isset($loggedInUser))
+if(isset($_SESSION['loggedInUser']))
 {
     echo "
     <script>

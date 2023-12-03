@@ -1,15 +1,15 @@
-<div class="row align-items-center justify-content-center mt-5">
+<div class="row align-items-center justify-content-center " style="margin-top: 20vh;">
     <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-4 block-back">
         <p class="h3 text-center">Login</p>
         <form id="loginForm" onsubmit="return false">
             <div class="mb-3">
                 <label for="InputEmail" class="form-label">Username/Email</label>
-                <input type="text" class="form-control" name="usernameinp" id="usernameinp">
+                <input type="text" class="form-control" name="usernameinp" id="usernameinp" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="passwordinp" id="passwordinp">
+                <input type="password" class="form-control" name="passwordinp" id="passwordinp" required>
             </div>
             <div class="mb-3">
                 <a class="text-decoration-none" href="#">Forgot Password</a>
