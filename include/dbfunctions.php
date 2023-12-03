@@ -39,5 +39,22 @@ function serverEnc($data)
   }
   return $encString;
 }
+
+function getuserData($conn,$userid,$fieldname)
+{
+  $getUserData = "SELECT $fieldname FROM emp_users WHERE id = $userid";
+  $resGUD = getSelect($conn,$getUserData,'array');
+  $rowGUD = count($resGUD);
+
+  if($rowGUD > 0)
+  {
+    $data = $resGUD[0][$fieldname];
+  }
+  else
+  {
+    $data = "Invalid user id or fieldname";
+  }
+  return $data;
+}
 ?>
 

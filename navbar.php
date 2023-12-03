@@ -20,13 +20,12 @@ include "include/header.php";
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img width="30" height="30" style="filter:invert(0.8);"src="https://img.icons8.com/ios-filled/50/000000/gender-neutral-user.png" alt="gender-neutral-user"/>
-                    <span class='text-center'>User</span>
+                    <span class='text-center'><?php echo getuserData($conn,$userid,'firstname')." ".getuserData($conn,$userid,'lastname')?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                      <p class="dropdown-item">User Full Name</p>
+                      <p class="dropdown-item"><?php echo getuserData($conn,$userid,'firstname')." ".getuserData($conn,$userid,'lastname')?></p>
                       <hr>
                         <li><a class="dropdown-item" href="#">Home</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
