@@ -14,36 +14,60 @@
             <div class="mb-3">
                 <a class="text-decoration-none" href="#">Forgot Password</a>
             </div>
-            <button type="submit" class="btn btn-primary float-end" >Login</button>
+            <div class="mb-3">
+                <div class="text-center" id="loginStatus"></div>
+            </div>
+            <button type="submit" class="btn btn-primary float-end">Login</button>
         </form>
     </div>
     <div class="col-4"></div>
 </div>
 
-<div id="loginStatus"></div>
+
 <script>
+    $(document).ready(function() {
+        // Attach click event to the login button
+        $('#loginForm').submit(function() {
+            var user = $('#usernameinp').val();
+            // Use the loginCheck API to validate login credentials
+            $.ajax({
+                type: 'POST',
+                url: 'api/loginCheck.php',
+                data: {
+                    username: dataEncrypt($('#usernameinp').val()),
+                    password: dataEncrypt($('#passwordinp').val())
+                },
+                success: function(Data) {
 
-$(document).ready(function() {
-    // Attach click event to the login button
-    $('#loginForm').submit(function() {
+                    // console.log(data);
+                    // $('#loginStatus').html(data);
 
-        // Use the loginCheck API to validate login credentials
-        $.ajax({
-            type: 'POST',
-            url: 'api/loginCheck.php',
-            data: {
-                username : dataEncrypt($('#usernameinp').val()),
-                password: dataEncrypt($('#passwordinp').val())
-            },
-            success: function(data) {
-                console.log('Success:', data);
-                // Handle the success response here
-            },
-            error: function(error) {
-                console.error('Error:', error);
-                // Handle errors here
-            }
+                    if (Data >= 0) {
+                        $('#loginStatus').html('<div class="alert alert-success" role="alert">Login Successfull , Welcome</div>');
+                        var loggedInUser = Data;
+
+                        // sending data for session creation
+                        $.ajax({
+                            url: 'loggedInUserSession.php',
+                            type: 'POST',
+                            data: {
+                                loggedInUser: loggedInUser
+                            },
+                            success: function(response) {
+                                console.log(response); 
+                            }
+                        });
+                        // sending data for session creation
+                    } else if (Data == -1) {
+                        $('#loginStatus').html('<div class="alert alert-info" role="alert">Login Failed , Please check credentials</div>');
+
+                    }
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                    // Handle errors here
+                }
+            });
         });
     });
-});
 </script>

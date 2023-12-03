@@ -11,12 +11,13 @@ $resGU = getSelect($conn,$getUser,'array');
 $rowGU = count($resGU);
 // validating login credentials
 
+
 if($rowGU > 0)
 {
-    echo "user found";
+    echo $resGU[0]['id'];
 }
 else
 {
-    echo "Wrong Credentials";
+    echo -1;
 }
 ?>
