@@ -22,14 +22,13 @@
                 for ($i = 0; $i < $rowGU; $i++) {
                     echo "<tr>
                             <td>" . $resGU[$i]['empid'] . "</td>
-                            <td>" . $resGU[$i]['firstname'] ." ".$resGU[$i]['lastname']. "</td>
+                            <td>" . $resGU[$i]['firstname'] . " " . $resGU[$i]['lastname'] . "</td>
                             <td>" . $resGU[$i]['email'] . "</td>
                             <td>
                             <a class='me-2' href='editEmployee.php' title='Edit Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/edit--v1.png' alt='edit--v1' /></a>
                             <a class='me-2' href='deleteEmployee.php' title='Delete Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/filled-trash.png' alt='filled-trash' /></a>
                             </td>
                         </tr>";
-
                 }
             }
             ?>
