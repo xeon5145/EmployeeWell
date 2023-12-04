@@ -63,11 +63,13 @@
                                     data: formData,
                                     success: function(data) {
                                         console.log('user deleted');
-                                        if (data = 1) {
+                                        if (data == 1) {
                                             $("#updateStatus").html("<div class='alert alert-success' role='alert'>Account deleted Successfuly</div>");
+                                            location.reload(true);
                                         }
-                                        if (data = 0) {
+                                        if (data == 0) {
                                             $("#updateStatus").html("<div class='alert alert-danger' role='alert'>Something went wrong , Please try again</div>");
+                                            location.reload(true);
                                         }
                                     },
                                     error: function() {
