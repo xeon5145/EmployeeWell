@@ -24,7 +24,7 @@ if ($resUC < 0) {
                 password,
                 WHERE 'id' = $resUC[0]['id'] ";
 
-    $emailMessage = "";
+    $emailMessage = "Hi , Your account has been updated successfully";
 } else {
     $userQuery = "  INSERT INTO emp_users (username,firstname,lastname,email)
                 VALUES ('$username','$firstName','$lastName','$email')";
