@@ -59,11 +59,10 @@ if ($rowGUD > 0) {
             evt.preventDefault();
             var formData = $(this).serialize();
             $.ajax({
-                url: "api/addUpdProfile.php",
+                url: "api/updateProfile.php",
                 type: "POST",
                 data: formData,
                 success: function(data) {
-
                     if (data = 1) {
                         $("#updateStatus").html("<div class='alert alert-success' role='alert'>Account has been created and email for password generation has been sent</div>");
                     }

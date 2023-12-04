@@ -27,29 +27,23 @@ if ($resUC > 0) {
 
     $emailSubject = "Account Updated successfully";
     $emailMessage = "Hi , Your account has been updated successfully";
-} else {
-    $userQuery = "  INSERT INTO emp_users (username,firstname,lastname,email)
-                VALUES ('$username','$firstName','$lastName','$email')";
 
-    $emailSubject = "Account Created successfully";
-    $emailMessage = "Hi , Your account has been created , Please use this link to generate your password";
-}
-
-
-if ($conn->query($userQuery) === TRUE) {
-
-    $sendTo = $email;
-    $mail->IsHTML(true);
-    $mail->Subject = $emailSubject;
-    $mail->Body    = $emailMessage;
-    $mail->AltBody = $emailMessage;
-
-    $mail->addAddress($sendTo);
-    if (!$mail->send()) {
-        echo 0;
-    } else {
-        echo 1;
+    if ($conn->query($userQuery) === TRUE) {
+    
+        $sendTo = $email;
+        $mail->IsHTML(true);
+        $mail->Subject = $emailSubject;
+        $mail->Body    = $emailMessage;
+        $mail->AltBody = $emailMessage;
+    
+        $mail->addAddress($sendTo);
+        if ($mail->send()) {
+            echo 1;
+        }
     }
-} else {
-    echo "something went wrong";
-}
+        
+    } else {
+        echo "something went wrong";
+    }
+
+
