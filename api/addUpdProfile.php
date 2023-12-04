@@ -13,22 +13,24 @@ $userCheck = "SELECT id FROM emp_users WHERE email = '$email'";
 $resUC = getSelect($conn, $userCheck, 'array');
 $rowUC = count($resUC);
 // checking if user already exists
-
-if ($resUC < 0) {
+if ($resUC > 0) {
+    $userId = $resUC[0]['id']; 
     $userQuery = "  UPDATE emp_users 
-                SET 'password' = '12345',
-                username,
-                firstname,
-                lastname,
-                email,
-                password,
-                WHERE 'id' = $resUC[0]['id'] ";
+                SET
+                username = '$username',
+                firstname = '$firstName',
+                lastname = '$lastName',
+                email = '$email',
+                password = '1234'
+                WHERE id = '$userId'";
 
+    $emailSubject = "Account Updated successfully";
     $emailMessage = "Hi , Your account has been updated successfully";
 } else {
     $userQuery = "  INSERT INTO emp_users (username,firstname,lastname,email)
                 VALUES ('$username','$firstName','$lastName','$email')";
 
+    $emailSubject = "Account Created successfully";
     $emailMessage = "Hi , Your account has been created , Please use this link to generate your password";
 }
 
@@ -37,7 +39,7 @@ if ($conn->query($userQuery) === TRUE) {
 
     $sendTo = $email;
     $mail->IsHTML(true);
-    $mail->Subject = 'Account Created Succesfully';
+    $mail->Subject = $emailSubject;
     $mail->Body    = $emailMessage;
     $mail->AltBody = $emailMessage;
 
@@ -48,4 +50,5 @@ if ($conn->query($userQuery) === TRUE) {
         echo 1;
     }
 } else {
+    echo "something went wrong";
 }
