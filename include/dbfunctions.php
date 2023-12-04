@@ -32,6 +32,18 @@ function dataDecrypt($string)
   return $decryptedData;
 }
 
+function dataEncrypt($string) {
+  $key = 'Iambatman';
+  $encryptedData = '';
+  $keyLength = strlen($key);
+
+  for ($i = 0; $i < strlen($string); $i++) {
+      $encryptedData .= chr(ord($string[$i]) ^ ord($key[$i % $keyLength]));
+  }
+
+  return base64_encode($encryptedData);
+}
+
 function serverEnc($data)
 {
   if (CRYPT_SHA512 == 1) {

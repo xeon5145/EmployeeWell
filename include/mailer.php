@@ -1,5 +1,4 @@
 <?php
-include "header.php";
 include "dbfunctions.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
