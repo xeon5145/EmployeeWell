@@ -7,7 +7,8 @@
     <div>
         <a class="btn btn-primary w-25 float-end mt-2" href="addEmployee.php" title="Add new employee">Add new employee</a>
     </div>
-    <table class="table table-hover mt-5">
+    <div class="mt-2 text-center" id="updateStatus"></div>
+    <table class="table table-hover mt-3">
         <thead>
             <tr>
                 <th>Employee Id</th>
@@ -25,29 +26,58 @@
                             <td>" . $resGU[$i]['firstname'] . " " . $resGU[$i]['lastname'] . "</td>
                             <td>" . $resGU[$i]['email'] . "</td>
                             <td>
-                            <a class='me-2' href='editEmployee.php?id=".$resGU[$i]['id']."' title='Edit Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/edit--v1.png' alt='edit--v1' /></a>
-                            <a class='me-2' href='#' data-bs-toggle='modal' data-bs-target='#exampleModal' title='Delete Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/filled-trash.png' alt='filled-trash' /></a>
+                            <a class='me-2' href='editEmployee.php?id=" . $resGU[$i]['id'] . "' title='Edit Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/edit--v1.png' alt='edit--v1' /></a>
+                            <a class='me-2' href='#' data-bs-toggle='modal' data-bs-target='#Modal" . $resGU[$i]['id'] . "' title='Delete Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/filled-trash.png' alt='filled-trash' /></a>
 
-                            <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                            <div class='modal fade' id='Modal" . $resGU[$i]['id'] . "' tabindex='-1' aria-labelledby='ModalLabel' aria-hidden='true'>
                             <div class='modal-dialog modal-dialog-centered'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
-                                        <h5 class='modal-title' id='exampleModalLabel'>Delete " . $resGU[$i]['firstname'] . " " . $resGU[$i]['lastname'] . "'s account</h5>
+                                        <h5 class='modal-title' id='ModalLabel'>Delete " . $resGU[$i]['firstname'] . " " . $resGU[$i]['lastname'] . "'s account</h5>
                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                     </div>
+                                    <form action='' id='deleteUser" . $resGU[$i]['id'] . "' onsubmit='return false' method='post'>
                                     <div class='modal-body'>
-                                        <p>This is the content of the modal. You can add your form or other content here.</p>
-                                    </div>
-                                    <div class='modal-footer'>
+                                        <input type='text' name='userid' value='" . $resGU[$i]['id'] . "' hidden>
+                                        </div>
+                                        <p class='ms-3'>Are you want to delete " . $resGU[$i]['firstname'] . " " . $resGU[$i]['lastname'] . "'s account</p>
+                                        <div class='modal-footer'>
                                         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                                        <button type='button' class='btn btn-danger'>Delete</button>
+                                        <input type='submit' class='btn btn-danger' value='Delete'>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                             </td>
                         </tr>";
+            ?>
+                    <script>
+                        $(document).ready(function() {
+                            $("#deleteUser<?php echo $resGU[$i]['id']; ?>").on("submit", function(evt) {
+                                evt.preventDefault();
+                                var formData = $(this).serialize();
+                                $.ajax({
+                                    url: "api/deleteProfile.php",
+                                    type: "POST",
+                                    data: formData,
+                                    success: function(data) {
+                                        console.log('user deleted');
+                                        if (data = 1) {
+                                            $("#updateStatus").html("<div class='alert alert-success' role='alert'>Account deleted Successfuly</div>");
+                                        }
+                                        if (data = 0) {
+                                            $("#updateStatus").html("<div class='alert alert-danger' role='alert'>Something went wrong , Please try again</div>");
+                                        }
+                                    },
+                                    error: function() {
+                                        // Handle error                 
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+            <?php
                 }
             }
             ?>
