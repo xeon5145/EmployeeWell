@@ -6,3 +6,8 @@ body {
     border-radius: 1rem;
     padding: 2rem;
 }
+.textInfo
+{
+    font-weight: bold;
+    color: #edb50c!important;
+}

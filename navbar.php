@@ -11,7 +11,7 @@ include "include/header.php";
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="dashboard.php">Dashboard</a>
                 </li>
             </ul>
 
@@ -25,7 +25,7 @@ include "include/header.php";
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                       <p class="dropdown-item"><?php echo getuserData($conn,$userid,'firstname')." ".getuserData($conn,$userid,'lastname')?></p>
                       <hr>
-                        <li><a class="dropdown-item" href="#">Home</a></li>
+                        <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>

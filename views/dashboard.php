@@ -26,7 +26,26 @@
                             <td>" . $resGU[$i]['email'] . "</td>
                             <td>
                             <a class='me-2' href='editEmployee.php' title='Edit Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/edit--v1.png' alt='edit--v1' /></a>
-                            <a class='me-2' href='deleteEmployee.php' title='Delete Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/filled-trash.png' alt='filled-trash' /></a>
+                            <a class='me-2' href='#' data-bs-toggle='modal' data-bs-target='#exampleModal' title='Delete Employee profile'><img width='30' height='30' src='https://img.icons8.com/ios-glyphs/30/filled-trash.png' alt='filled-trash' /></a>
+
+                            <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                                <div class='modal-content'>
+                                    <div class='modal-header'>
+                                        <h5 class='modal-title' id='exampleModalLabel'>Delete " . $resGU[$i]['firstname'] . " " . $resGU[$i]['lastname'] . "'s account</h5>
+                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p>This is the content of the modal. You can add your form or other content here.</p>
+                                    </div>
+                                    <div class='modal-footer'>
+                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                                        <button type='button' class='btn btn-danger'>Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                             </td>
                         </tr>";
                 }

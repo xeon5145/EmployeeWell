@@ -41,12 +41,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center mt-3">
-                <span class="textInfo">An email will be sent to user to generate their password</span>
-            </div>
 
             <div class="col-md-12 text-center mt-3">
-                <button type="submit" class="btn btn-primary">Add Employee</button>
+                <button type="submit" class="btn btn-primary">Confirm Update</button>
             </div>
         </form>
     </div>
