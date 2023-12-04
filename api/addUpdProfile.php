@@ -13,6 +13,7 @@ $userCheck = "SELECT id FROM emp_users WHERE email = '$email'";
 $resUC = getSelect($conn, $userCheck, 'array');
 $rowUC = count($resUC);
 // checking if user already exists
+
 if ($resUC > 0) {
     $userId = $resUC[0]['id']; 
     $userQuery = "  UPDATE emp_users 
