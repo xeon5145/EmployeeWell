@@ -9,7 +9,7 @@ $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 
 // checking if user already exists
-$userCheck = "SELECT id FROM emp_users WHERE email = '$email'";
+$userCheck = "SELECT id FROM emp_users WHERE id = '$employeeId'";
 $resUC = getSelect($conn, $userCheck, 'array');
 $rowUC = count($resUC);
 // checking if user already exists
@@ -26,7 +26,7 @@ if ($resUC > 0) {
                 WHERE id = '$userId'";
 
     $emailSubject = "Account Updated successfully";
-    $emailMessage = "Hi , Your account has been updated successfully";
+    $emailMessage = "Hi ".$firstName." , Your account has been updated successfully";
 
     if ($conn->query($userQuery) === TRUE) {
     
@@ -38,12 +38,16 @@ if ($resUC > 0) {
     
         $mail->addAddress($sendTo);
         if ($mail->send()) {
-            echo 1;
+            $status = 'Account has been updated successfully';
         }
     }
+}
+else
+{
+    $status = 'Invalid User';
+}
+
+echo $status;
         
-    } else {
-        echo "something went wrong";
-    }
 
 

@@ -63,12 +63,7 @@ if ($rowGUD > 0) {
                 type: "POST",
                 data: formData,
                 success: function(data) {
-                    if (data = 1) {
-                        $("#updateStatus").html("<div class='alert alert-success' role='alert'>Account has been created and email for password generation has been sent</div>");
-                    }
-                    if (data = 0) {
-                        $("#updateStatus").html("<div class='alert alert-danger' role='alert'>Something went wrong , Please try again</div>");
-                    }
+                    $("#updateStatus").html("<div class='alert alert-info' role='alert'>"+ data +"</div>");
                 },
                 error: function() {
                     // Handle error
