@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `employeewell` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `employeewell`;
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: localhost    Database: employeewell
 -- ------------------------------------------------------
@@ -143,10 +141,10 @@ CREATE TABLE `emp_users` (
   `firstname` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL,
   `deleted` varchar(45) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +153,7 @@ CREATE TABLE `emp_users` (
 
 LOCK TABLES `emp_users` WRITE;
 /*!40000 ALTER TABLE `emp_users` DISABLE KEYS */;
-INSERT INTO `emp_users` VALUES (5,'almighty','Abhishek','Singh','abhisheksingh5145@gmail.com',NULL,'0'),(1,'abhishek','Abhishek','Singh','abhisheksingh5145@outlook.com','1234','0'),(12,'testuser1','Test','User','abhishekkagra@aaddoo.net',NULL,'0');
+INSERT INTO `emp_users` VALUES (1,'user','Abhishek','Singh','abhisheksingh5145@outlook.com','$5$Iambatman$CRbwfKNX8AHEA2ffUWh7ep8eWOdD81L.ycj19moB1f0','0');
 /*!40000 ALTER TABLE `emp_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -168,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-04 18:40:05
+-- Dump completed on 2023-12-04 23:00:57

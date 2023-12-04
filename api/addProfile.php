@@ -3,17 +3,11 @@ require_once "../include/connection.php";
 require_once "../include/mailer.php";
 require_once "../include/dbfunctions.php";
 
-// $username = $_POST['username'];
-// $email = $_POST['email'];
-// $employeeId = $_POST['employeeId'];
-// $firstName = $_POST['firstName'];
-// $lastName = $_POST['lastName'];
-
-$username = 'mailTest';
-$email = 'abhishekkagra@aaddoo.net';
-$employeeId = 1001;
-$firstName = 'Pwd';
-$lastName = 'mailer test';
+$username = mysqli_real_escape_string($conn,$_POST['username']);
+$email = mysqli_real_escape_string($conn,$_POST['email']);
+$employeeId = mysqli_real_escape_string($conn,$_POST['employeeId']);
+$firstName = mysqli_real_escape_string($conn,$_POST['firstName']);
+$lastName = mysqli_real_escape_string($conn,$_POST['lastName']);
 $timestamp = time() + (60 * 10);
 
 // checking if user already exists
@@ -37,8 +31,7 @@ if ($rowUC > 0) {
         // getting variables to generate user password
 
         $emailSubject = "Account Created successfully";
-        echo $emailMessage = " <p> Hi ".$firstName.",</p>
-                                <br>
+        $emailMessage = " <p> Hi ".$firstName.",</p>
                                 <p>Your account has been created , Please use this link below to generate your password</p>
                                 <a href='".$url."/EmployeeWell/generatePwd.php?stamp=".$encMail."'>Generate Password</a>
                                 <br>

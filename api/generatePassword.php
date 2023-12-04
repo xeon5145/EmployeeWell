@@ -12,7 +12,6 @@ if ($conn->query($updatePwd) === TRUE) {
 
     $emailSubject = "Password generated successfully";
     $emailMessage = " <p> Hi ,</p>
-                                    <br>
                                     <p>Password for your account has been generated successfully</p>
                                     ";
     $sendTo = $email;

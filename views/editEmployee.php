@@ -37,6 +37,11 @@ if ($rowGUD > 0) {
                             <input type="text" class="form-control" id="lastName" placeholder="Last name" name="lastName" value="<?php echo $resGUD[0]['lastname']; ?>" required>
                         </div>
 
+                        <div class="form-group mt-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="">
+                        </div>
+
                     </div>
                 </div>
 

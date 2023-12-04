@@ -54,7 +54,7 @@ function serverEnc($data)
 
 function getuserData($conn,$userid,$fieldname)
 {
-  $getUserData = "SELECT $fieldname FROM emp_users WHERE id = $userid";
+  $getUserData = "SELECT $fieldname FROM emp_users WHERE id = $userid AND deleted = 0";
   $resGUD = getSelect($conn,$getUserData,'array');
   $rowGUD = count($resGUD);
 

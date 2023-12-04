@@ -2,22 +2,22 @@
 require_once "../include/connection.php";
 require_once "../include/dbfunctions.php";
 
-$username = dataDecrypt($_POST['username']);
-$password = serverEnc(dataDecrypt($_POST['password']));
-
+$username = dataDecrypt(mysqli_real_escape_string($conn,$_POST['username']));
+$password = serverEnc(dataDecrypt(mysqli_real_escape_string($conn,$_POST['password'])));
 // validating login credentials
-$getUser = "SELECT id FROM emp_users WHERE username = '$username' OR email = '$username'";
+$getUser = "SELECT id,password,deleted FROM emp_users WHERE username = '$username' AND password = '$password' AND deleted = 0";
 $resGU = getSelect($conn,$getUser,'array');
 $rowGU = count($resGU);
 // validating login credentials
 
-
 if($rowGU > 0)
 {
-    echo $resGU[0]['id'];
+    $status =  $resGU[0]['id'];
 }
 else
 {
-    echo -1;
+    $status = -1;
 }
+
+echo $status;
 ?>

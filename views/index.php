@@ -4,7 +4,7 @@
         <p class="h3 text-center">Login</p>
         <form id="loginForm" onsubmit="return false">
             <div class="mb-3">
-                <label for="InputEmail" class="form-label">Username/Email</label>
+                <label for="InputEmail" class="form-label">Username</label>
                 <input type="text" class="form-control" name="usernameinp" id="usernameinp" required>
             </div>
             <div class="mb-3">
@@ -12,7 +12,7 @@
                 <input type="password" class="form-control" name="passwordinp" id="passwordinp" required>
             </div>
             <div class="mb-3">
-                <a class="text-decoration-none" href="#">Forgot Password</a>
+                <!-- <a class="text-decoration-none" href="#">Forgot Password</a> -->
             </div>
             <div class="mb-3">
                 <div class="text-center" id="loginStatus"></div>
@@ -51,7 +51,7 @@
                                 loggedInUser: loggedInUser
                             },
                             success: function(response) {
-                                console.log(response);
+
                             }
                         });
                         // sending data for session creation
@@ -59,9 +59,8 @@
                         // redirection to dashboard
                         window.location = 'dashboard.php';
                         // redirection to dashboard
-                    } else if (Data == -1) {
+                    } else if (Data < 0) {
                         $('#loginStatus').html('<div class="alert alert-info" role="alert">Login Failed , Please check credentials</div>');
-
                     }
                 },
                 error: function(error) {

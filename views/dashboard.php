@@ -1,5 +1,5 @@
 <div class=" ms-5 me-5 row block-back mt-5">
-    <p class="h4">Hi <?php echo getuserData($conn, $userid, 'firstname') . " " . getuserData($conn, $userid, 'lastname') ?></p>
+    <p class="h4">Hi <?php echo getuserData($conn, $userid, 'firstname'); ?></p>
 </div>
 
 <div class="row ms-5 me-5 block-back mt-3">
